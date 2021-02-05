@@ -7,8 +7,8 @@ namespace TestTask
     {
         static void Main(string[] args)
         {
-            /*Example*/
-            /*      string address = "Москва ЮВАО";
+            /* Example
+                 string address = "Москва ЮВАО";
                   string fileName = "test.txt";
                   int frequency = 3;*/
 
@@ -19,9 +19,9 @@ namespace TestTask
             Console.WriteLine("Enter frequency: ");
             int frequency = Convert.ToInt32(Console.ReadLine());
 
-            List<IGeoServiceResponce> list = new OSMGeoService().GetByAddress(address);
-            List<IGeoServiceResponce> responce = GeoResponcePoligonSimplifier.simplify(list, frequency);
-            new GeoPoligonsWriter().write(fileName, responce);
+            List<IGeoServiceResponse> list = new OSMGeoService().GetByAddress(address);
+            List<IGeoServiceResponse> response = GeoResponsePolygonSimplifier.Simplify(list, frequency);
+            new GeoPolygonsWriter().write(fileName, response);
         }
     }
 }

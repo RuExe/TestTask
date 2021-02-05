@@ -1,6 +1,6 @@
 ﻿namespace TestTask
 {
-    public class OSMGeoServiceResponce : IGeoServiceResponce
+    public class OsmGeoServiceResponse : IGeoServiceResponse
     {
         public int place_id { get; set; }
         public string licence { get; set; }

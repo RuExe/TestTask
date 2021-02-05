@@ -3,19 +3,21 @@ using System.Collections.Generic;
 
 namespace TestTask
 {
-    static class GeoResponcePoligonSimplifier
+    static class GeoResponsePolygonSimplifier
     {
-        public static List<IGeoServiceResponce> simplify(List<IGeoServiceResponce> list, int frequency)
+        public static List<IGeoServiceResponse> Simplify(List<IGeoServiceResponse> list, int frequency)
         {
-            List<IGeoServiceResponce> result = new List<IGeoServiceResponce>();
+            List<IGeoServiceResponse> result = new List<IGeoServiceResponse>();
 
-            foreach (OSMGeoServiceResponce item in list)
-                result.Add(simplify(item, frequency));
+            foreach (OsmGeoServiceResponse item in list)
+            {
+                result.Add(Simplify(item, frequency));
+            }
 
             return result;
         }
 
-        public static IGeoServiceResponce simplify(IGeoServiceResponce list, int frequency)
+        public static IGeoServiceResponse Simplify(IGeoServiceResponse list, int frequency)
         {
             if (frequency <= 1)
             {
@@ -33,9 +35,9 @@ namespace TestTask
                 {
                     int length = coordinatesList[area][coordinate].Length;
                     result[area][coordinate] = new float[length / frequency][];
-                    for (int i = frequency - 1, finded = 0; i < length; i += frequency)
+                    for (int i = frequency - 1, found = 0; i < length; i += frequency)
                     {
-                        result[area][coordinate][finded++] = (float[])coordinatesList[area][coordinate][i].Clone();
+                        result[area][coordinate][found++] = (float[])coordinatesList[area][coordinate][i].Clone();
                     }
                 }
             }

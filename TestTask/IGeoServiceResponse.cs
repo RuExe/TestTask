@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace TestTask
+﻿namespace TestTask
 {
-    interface IGeoServiceResponce
+    interface IGeoServiceResponse
     {
         public Geojson geojson { get; set; }
     }

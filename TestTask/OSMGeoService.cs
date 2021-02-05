@@ -8,7 +8,7 @@ namespace TestTask
 {
     class OSMGeoService : IGeoService
     {
-        private HttpClient client;
+        private readonly HttpClient client;
 
         public OSMGeoService()
         {
@@ -16,15 +16,15 @@ namespace TestTask
             SetDefaultHeaders();
         }
 
-        public List<IGeoServiceResponce> GetByAddress(string address)
+        public List<IGeoServiceResponse> GetByAddress(string address)
         {
             Uri uri = new Uri($"https://nominatim.openstreetmap.org/search?q={address}&format=json&polygon_geojson=1");
 
             HttpResponseMessage response = client.GetAsync(uri).Result;
-            List<OSMGeoServiceResponce> responces = JsonConvert.DeserializeObject<List<OSMGeoServiceResponce>>(response.Content.ReadAsStringAsync().Result);
+            List<OsmGeoServiceResponse> responses = JsonConvert.DeserializeObject<List<OsmGeoServiceResponse>>(response.Content.ReadAsStringAsync().Result);
 
-            List<IGeoServiceResponce> result = new List<IGeoServiceResponce>();
-            responces.ForEach(item => { result.Add(item); });
+            List<IGeoServiceResponse> result = new List<IGeoServiceResponse>();
+            responses.ForEach(item => { result.Add(item); });
             return result;
         }
 
