@@ -16,9 +16,9 @@ namespace TestTask
             SetDefaultHeaders();
         }
 
-        public List<IGeoServiceResponce> GetByAdress(string adress)
+        public List<IGeoServiceResponce> GetByAddress(string address)
         {
-            Uri uri = new Uri($"https://nominatim.openstreetmap.org/search?q={adress}&format=json&polygon_geojson=1");
+            Uri uri = new Uri($"https://nominatim.openstreetmap.org/search?q={address}&format=json&polygon_geojson=1");
 
             HttpResponseMessage response = client.GetAsync(uri).Result;
             List<OSMGeoServiceResponce> responces = JsonConvert.DeserializeObject<List<OSMGeoServiceResponce>>(response.Content.ReadAsStringAsync().Result);

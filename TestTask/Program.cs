@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
 
 namespace TestTask
@@ -9,21 +8,20 @@ namespace TestTask
         static void Main(string[] args)
         {
             /*Example*/
-            string adress = "Москва ЮВАО";
-            string fileName = "test.txt";
-            int frequency = 3;
+            /*      string address = "Москва ЮВАО";
+                  string fileName = "test.txt";
+                  int frequency = 3;*/
 
-            List<IGeoServiceResponce> list = new OSMGeoService().GetByAdress(adress);
+            Console.WriteLine("Enter address: ");
+            string address = Console.ReadLine();
+            Console.WriteLine("Enter file name: ");
+            string fileName = Console.ReadLine();
+            Console.WriteLine("Enter frequency: ");
+            int frequency = Convert.ToInt32(Console.ReadLine());
+
+            List<IGeoServiceResponce> list = new OSMGeoService().GetByAddress(address);
             List<IGeoServiceResponce> responce = GeoResponcePoligonSimplifier.simplify(list, frequency);
-
-            Console.WriteLine(1);
-            /* using (StreamWriter sw = new StreamWriter(fileName))
-             {
-                 foreach (GeoServiceResponce item in list) {
-                     string temp = JsonConvert.SerializeObject(item);
-                     Console.WriteLine(temp);
-                 }
-             }*/
+            new GeoPoligonsWriter().write(fileName, responce);
         }
     }
 }

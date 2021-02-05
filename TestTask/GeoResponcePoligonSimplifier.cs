@@ -15,7 +15,7 @@ namespace TestTask
             return result;
         }
 
-        public static OSMGeoServiceResponce simplify(OSMGeoServiceResponce list, int frequency)
+        public static IGeoServiceResponce simplify(IGeoServiceResponce list, int frequency)
         {
             if (frequency <= 1)
             {

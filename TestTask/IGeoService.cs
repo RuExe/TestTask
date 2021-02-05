@@ -5,6 +5,6 @@ namespace TestTask
 {
     interface IGeoService
     {
-        public List<IGeoServiceResponce> GetByAdress(string adress);
+        public List<IGeoServiceResponce> GetByAddress(string address);
     }
 }
