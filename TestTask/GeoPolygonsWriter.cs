@@ -6,7 +6,7 @@ namespace TestTask
 {
     class GeoPolygonsWriter
     {
-        public void write(string fileName, List<IGeoServiceResponse> responses)
+        public void Write(string fileName, List<IGeoServiceResponse> responses)
         {
             using (StreamWriter sw = new StreamWriter(fileName))
             {

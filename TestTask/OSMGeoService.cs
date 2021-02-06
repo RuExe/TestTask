@@ -23,8 +23,7 @@ namespace TestTask
             HttpResponseMessage response = client.GetAsync(uri).Result;
             List<OsmGeoServiceResponse> responses = JsonConvert.DeserializeObject<List<OsmGeoServiceResponse>>(response.Content.ReadAsStringAsync().Result);
 
-            List<IGeoServiceResponse> result = new List<IGeoServiceResponse>();
-            responses.ForEach(item => { result.Add(item); });
+            List<IGeoServiceResponse> result = new List<IGeoServiceResponse>(responses);
             return result;
         }
 
